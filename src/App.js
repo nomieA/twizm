@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import UserSearch from "./components/UserSearch";
 
 function App() {
-  const handleSearch = (username) => {
+  const [username, setUsername] = useState("");
+
+  const handleSearch = (name) => {
     // example request to backend or twitter API
-    fetch(`/api/users/${encodeURIComponent(username)}`)
+    fetch(`/api/users/${encodeURIComponent(name)}`)
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
+  };
+
+  const handleChange = (value) => {
+    setUsername(value);
   };
 
   return (
@@ -19,7 +25,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
 
         {/* 输入框与按钮组件 */}
-        <UserSearch onSearch={handleSearch} />
+        <UserSearch onSearch={handleSearch} onChange={handleChange} />
 
       </header>
     </div>

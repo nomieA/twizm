@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
-function UserSearch({ onSearch }) {
+function UserSearch({ onSearch, onChange }) {
   const [username, setUsername] = useState("");
 
   const handleChange = (e) => {
-    setUsername(e.target.value);
+    const value = e.target.value;
+    setUsername(value);
+    if (onChange) {
+      onChange(value);
+    }
   };
 
   const handleSearch = () => {
