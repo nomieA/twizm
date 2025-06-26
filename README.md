@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## User Search
+
+The app includes a `UserSearch` component combining an input field with a toilet icon button. The parent component receives username updates via `onChange` and can trigger API calls when the user presses Enter or clicks the button.
+
 ## Available Scripts
 
 In the project directory, you can run:
