@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import UserSearch from "./components/UserSearch";
 
 function App() {
-  // 在组件中声明输入框的状态
-  const [username, setUsername] = useState("");
+  const handleSearch = (username) => {
+    // example request to backend or twitter API
+    fetch(`/api/users/${encodeURIComponent(username)}`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="App">
@@ -12,22 +18,8 @@ function App() {
         {/* 保留旋转 Logo */}
         <img src={logo} className="App-logo" alt="logo" />
 
-        {/* 输入框替换原有文字 */}
-<div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
-  <span style={{ marginRight: "6px", fontSize: "20px" }}>@</span>
-  <input
-    type="text"
-    placeholder="请输入用户名"
-    value={username}
-    onChange={e => setUsername(e.target.value)}
-    style={{
-      padding: "8px 12px",
-      fontSize: "16px",
-      borderRadius: "4px",
-      border: "none"
-    }}
-  />
-</div>
+        {/* 输入框与按钮组件 */}
+        <UserSearch onSearch={handleSearch} />
 
       </header>
     </div>
