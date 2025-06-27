@@ -1,3 +1,4 @@
+/* ===== 基础App样式 ===== */
 .App {
   text-align: center;
 }
@@ -22,6 +23,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+  padding: 20px;
 }
 
 .App-link {
@@ -34,5 +37,362 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ===== 新增功能样式 ===== */
+
+/* Logo容器 */
+.logo-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* 标题样式 */
+.app-title {
+  font-size: 3rem;
+  margin: 10px 0;
+  background: linear-gradient(45deg, #61dafb, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(97, 218, 251, 0.3);
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 30px;
+  color: #cccccc;
+}
+
+/* 搜索组件样式 */
+.user-search {
+  margin: 20px 0;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-container:focus-within {
+  border-color: #61dafb;
+  box-shadow: 0 0 20px rgba(97, 218, 251, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.at-symbol {
+  color: #61dafb;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 5px;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+.username-input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  outline: none;
+  flex: 1;
+  min-width: 200px;
+  font-family: inherit;
+}
+
+.username-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.username-input:focus {
+  color: #ffffff;
+}
+
+.flush-button {
+  background: linear-gradient(135deg, #61dafb, #21a1c4);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  box-shadow: 0 4px 15px rgba(97, 218, 251, 0.3);
+}
+
+.flush-button:hover {
+  transform: scale(1.1) rotate(10deg);
+  background: linear-gradient(135deg, #21a1c4, #61dafb);
+  box-shadow: 0 6px 20px rgba(97, 218, 251, 0.4);
+}
+
+.flush-button:active {
+  transform: scale(0.95);
+}
+
+/* 用户显示样式 */
+.current-user {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  padding: 10px 20px;
+  background: rgba(97, 218, 251, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(97, 218, 251, 0.3);
+}
+
+.username-display {
+  color: #61dafb;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+.animation-status {
+  margin: 20px 0;
+  padding: 15px 25px;
+  background: rgba(97, 218, 251, 0.2);
+  border-radius: 20px;
+  font-size: 1rem;
+  border: 1px solid rgba(97, 218, 251, 0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(97, 218, 251, 0.6);
+  }
+}
+
+/* ===== 喷涌动画样式 ===== */
+.spray-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.spray-text {
+  position: absolute;
+  color: #61dafb;
+  font-weight: bold;
+  font-size: 1rem;
+  animation: spray-fountain 3s ease-out forwards;
+  opacity: 0;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.8);
+  white-space: nowrap;
+}
+
+@keyframes spray-fountain {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(calc(var(--spray-x) * 0.3), -30px) scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(calc(var(--spray-x) * 0.6), -60px) scale(1);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(var(--spray-x), -120px) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--spray-x) * 1.2), -180px) scale(0.6);
+  }
+}
+
+/* 不同轨迹的喷涌路径 */
+.spray-0 { 
+  --spray-x: -100px; 
+  animation-delay: 0s;
+}
+
+.spray-1 { 
+  --spray-x: -60px; 
+  animation-delay: 0.1s;
+}
+
+.spray-2 { 
+  --spray-x: -20px; 
+  animation-delay: 0.2s;
+}
+
+.spray-3 { 
+  --spray-x: 20px; 
+  animation-delay: 0.3s;
+}
+
+.spray-4 { 
+  --spray-x: 60px; 
+  animation-delay: 0.4s;
+}
+
+.spray-5 { 
+  --spray-x: 100px; 
+  animation-delay: 0.5s;
+}
+
+.spray-6 { 
+  --spray-x: -80px; 
+  animation-delay: 0.6s;
+}
+
+.spray-7 { 
+  --spray-x: 80px; 
+  animation-delay: 0.7s;
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2rem;
+  }
+  
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .username-input {
+    min-width: 150px;
+    font-size: 1rem;
+  }
+  
+  .input-container {
+    padding: 8px 15px;
+  }
+  
+  .flush-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  .spray-text {
+    font-size: 0.9rem;
+  }
+  
+  /* 移动端调整喷涌范围 */
+  .spray-0 { --spray-x: -60px; }
+  .spray-1 { --spray-x: -40px; }
+  .spray-2 { --spray-x: -20px; }
+  .spray-3 { --spray-x: 20px; }
+  .spray-4 { --spray-x: 40px; }
+  .spray-5 { --spray-x: 60px; }
+  .spray-6 { --spray-x: -50px; }
+  .spray-7 { --spray-x: 50px; }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    padding: 15px;
+  }
+  
+  .app-title {
+    font-size: 1.5rem;
+  }
+  
+  .input-container {
+    padding: 6px 12px;
+  }
+  
+  .username-input {
+    min-width: 120px;
+    font-size: 0.9rem;
+  }
+  
+  .flush-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== 高级视觉效果 ===== */
+
+/* Logo发光效果 */
+.App-logo {
+  filter: drop-shadow(0 0 20px rgba(97, 218, 251, 0.5));
+  transition: filter 0.3s ease;
+}
+
+.App-logo:hover {
+  filter: drop-shadow(0 0 30px rgba(97, 218, 251, 0.8));
+}
+
+/* 背景动态效果 */
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(97, 218, 251, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(97, 218, 251, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(97, 218, 251, 0.1) 0%, transparent 50%);
+  animation: background-pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes background-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* 输入框聚焦特效 */
+.input-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 25px;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(97, 218, 251, 0.4), 
+    transparent, 
+    rgba(97, 218, 251, 0.4)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.input-container:focus-within::before {
+  opacity: 1;
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
