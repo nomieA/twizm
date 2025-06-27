@@ -33,6 +33,10 @@ The project was bootstrapped with
    npm run build
    ```
 
+## User Search
+
+The app includes a `UserSearch` component combining an input field with a toilet icon button. The parent component receives username updates via `onChange` and can trigger API calls when the user presses Enter or clicks the button.
+
 ## Available Scripts
 
 In the project directory, you can run:
