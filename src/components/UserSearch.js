@@ -42,7 +42,6 @@ function UserSearch({ onSearch, onChange }) {
           border: "none",
         }}
       />
-      {/* Toilet icon button */}
       <button
         onClick={handleSearch}
         style={{ marginLeft: "8px", fontSize: "18px", cursor: "pointer" }}

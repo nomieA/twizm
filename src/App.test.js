@@ -7,4 +7,5 @@ test('renders input and button', () => {
   expect(input).toBeInTheDocument();
   const button = screen.getByRole('button', { name: '🚽' });
   expect(button).toBeInTheDocument();
+
 });

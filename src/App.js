@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import UserSearch from "./components/UserSearch";
 
 function App() {
   const [username, setUsername] = useState("");
+
 
   const handleSearch = (name) => {
     // example request to backend or twitter API
@@ -26,6 +27,7 @@ function App() {
 
         {/* 输入框与按钮组件 */}
         <UserSearch onSearch={handleSearch} onChange={handleChange} />
+
 
       </header>
     </div>
